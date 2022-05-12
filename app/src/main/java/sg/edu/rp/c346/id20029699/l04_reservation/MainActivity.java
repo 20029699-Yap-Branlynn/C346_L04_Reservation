@@ -45,18 +45,29 @@ public class MainActivity extends AppCompatActivity {
                 int month = dp.getMonth();
                 int year = dp.getYear();
 
-                if (cb.isChecked() == true){
-                    String msg = name + " Your reservation for "
-                            + pax + " on " + day+ "/" + month + "/" + year + " at " + hour + ":" + min +
-                            " in the smoking area has been confirmed. See you soon!";
+                String nameData = name.getText().toString();
+                String phoneData = number.getText().toString();
+                String paxData = pax.toString();
+                if(nameData.isEmpty() == true){
+                    Toast.makeText(MainActivity.this, "Name should not be empty", Toast.LENGTH_LONG).show();
+                }else if (phoneData.isEmpty() == true){
+                    Toast.makeText(MainActivity.this, "Phone number should not be empty", Toast.LENGTH_LONG).show();
+                }else if (paxData.isEmpty() == true){
+                    Toast.makeText(MainActivity.this, "Pax should not be empty", Toast.LENGTH_LONG).show();
+                }else if (nameData.isEmpty() == false && phoneData.isEmpty() == false && paxData.isEmpty() == false){
+                    if (cb.isChecked() == true){
+                        String msg = name + " Your reservation for "
+                                + pax + " on " + day+ "/" + month + "/" + year + " at " + hour + ":" + min +
+                                " in the smoking area has been confirmed. See you soon!";
 
-                    Toast.makeText(MainActivity.this, "Reservation in smoking area Confirmed", Toast.LENGTH_LONG).show();
-                }else {
-                    String msg = name + " Your reservation for "
-                            + pax + " on " + day+ "/" + month + "/" + year + " at " + hour + ":" + min +
-                            " has been confirmed. See you soon!";
+                        Toast.makeText(MainActivity.this, "Reservation in smoking area Confirmed", Toast.LENGTH_LONG).show();
+                    }else {
+                        String msg = name + " Your reservation for "
+                                + pax + " on " + day+ "/" + month + "/" + year + " at " + hour + ":" + min +
+                                " has been confirmed. See you soon!";
 
-                    Toast.makeText(MainActivity.this, "Reservation Confirmed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Reservation Confirmed", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -73,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 tp.setCurrentMinute(30);
             }
         });
+
+
 
     }
 }
