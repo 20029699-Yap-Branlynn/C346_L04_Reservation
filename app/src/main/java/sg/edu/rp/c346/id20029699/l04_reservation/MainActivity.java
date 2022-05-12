@@ -85,7 +85,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        tp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker timePicker, int i, int i1) {
+                int hour = tp.getCurrentHour();
 
+                if (hour < 8){
+                    tp.setCurrentHour(8);
+                }else if(hour > 20){
+                    tp.setCurrentHour(20);
+                }
+
+            }
+        });
 
     }
 }
